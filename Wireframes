@@ -1,0 +1,109 @@
+
+
+🖼️ Wireframes (تخطيط واجهات التطبيق)
+
+1. Splash Screen
+`
+---------------------------------
+|           Logo App            |
+|        MarketLens             |
+|   Loading animation (dots)    |
+---------------------------------
+`
+
+2. Login / Signup Screen
+`
+---------------------------------
+|        Welcome to MarketLens  |
+|                               |
+|   [ Google Login Button ]     |
+|   [ Facebook Login Button ]   |
+|   [ Email / Password Fields ] |
+|   [ Sign Up / Forgot Password]|
+---------------------------------
+`
+
+3. Home Screen
+`
+---------------------------------
+|   Top Bar: Profile Icon       |
+|   Title: "Find Best Prices"   |
+|                               |
+|   [ Camera Button ]           |
+|   [ Search Bar (optional) ]   |
+|                               |
+|   Recent Products List:       |
+|   - Product 1 (thumbnail + $) |
+|   - Product 2 (thumbnail + $) |
+---------------------------------
+`
+
+4. Camera Screen
+`
+---------------------------------
+|   Live Camera View            |
+|                               |
+|   [ Capture Button ]          |
+|   [ Switch Camera Icon ]      |
+|   [ Flash Toggle Icon ]       |
+---------------------------------
+`
+
+5. Results Screen
+`
+---------------------------------
+|   Product Image (captured)    |
+|   Product Name                |
+|                               |
+|   Prices Table:               |
+|   - Amazon: $XX + [Buy]       |
+|   - eBay: $YY + [Buy]         |
+|   - AliExpress: $ZZ + [Buy]   |
+|                               |
+|   Reviews: ★★★★☆ (1200)       |
+|   Alternatives: Product A, B  |
+|   [ Coupon Button ]           |
+|   [ Save to Favorites ]       |
+---------------------------------
+`
+
+6. AR Overlay Screen
+`
+---------------------------------
+|   Camera View                 |
+|   Overlay Box above product:  |
+|   - Price: $XX                |
+|   - Rating: ★★★★☆             |
+|   - Coupon: -10%              |
+---------------------------------
+`
+
+7. Profile Screen
+`
+---------------------------------
+|   User Avatar + Name          |
+|                               |
+|   [ Favorites List ]          |
+|   [ Price Alerts ]            |
+|   [ Settings ]                |
+|   [ Logout ]                  |
+---------------------------------
+`
+
+---
+
+🎨 ملاحظات التصميم
+- ألوان: أزرق رئيسي (#007BFF)، أبيض للخلفية، برتقالي للعروض.  
+- خطوط: بسيطة وواضحة (Roboto أو San Francisco).  
+- أيقونات: كاميرا، كوبون، مفضلة، إشعارات.  
+- تجربة المستخدم: الوصول إلى السعر في 3 خطوات فقط (فتح الكاميرا → تصوير → عرض النتائج).  
+
+---
+
+🧪 ضمان خلو الأخطاء
+- Validation: التحقق من إدخال البريد وكلمة المرور بشكل صحيح.  
+- Error Handling: رسالة واضحة عند فشل التعرف على المنتج أو عند انقطاع الإنترنت.  
+- Testing: تجربة الواجهات على شاشات مختلفة (صغيرة وكبيرة).  
+- Crash Reporting: استخدام Firebase Crashlytics لمراقبة أي خطأ.  
+
+---
