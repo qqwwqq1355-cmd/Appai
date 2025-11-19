@@ -1,7 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/services/api_service.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final ApiService _apiService = ApiService();
+  String _userEmail = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserEmail();
+  }
+
+  Future<void> _loadUserEmail() async {
+    final email = await _apiService.getUserEmail();
+    setState(() {
+      _userEmail = email ?? 'No email found';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,13 +32,20 @@ class HomeScreen extends StatelessWidget {
         title: const Text('MarketLens'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.person),
-            onPressed: () {},
+            icon: const Icon(Icons.logout),
+            onPressed: () async {
+              await _apiService.logout();
+              Navigator.pushReplacementNamed(context, '/login');
+            },
           ),
         ],
       ),
       body: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Welcome, $_userEmail!'),
+          ),
           Expanded(
             child: Center(
               child: ElevatedButton.icon(
