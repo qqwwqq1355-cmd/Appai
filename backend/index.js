@@ -11,6 +11,9 @@ const port = process.env.PORT || 3000;
 
 const productsRouter = require('./routes/products');
 const authRouter = require('./routes/auth');
+const admitadRouter = require('./routes/admitad');
+const visionRouter = require('./routes/vision');
+const integratedSearchRouter = require('./routes/integrated-search');
 
 // Security middleware
 app.use(helmet());
@@ -52,6 +55,9 @@ if (process.env.MONGODB_URI) {
 // Routes
 app.use('/api/products', productsRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/admitad', admitadRouter);
+app.use('/api/vision', visionRouter);
+app.use('/api/search', integratedSearchRouter);
 
 app.get('/', (req, res) => {
   res.json({

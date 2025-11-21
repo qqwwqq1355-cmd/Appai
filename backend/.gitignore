@@ -5,3 +5,6 @@ node_modules
 dist
 build
 coverage
+uploads/
+config/*.json
+config/google-cloud-key.json
