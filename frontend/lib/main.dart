@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_project/screens/camera_screen.dart';
-import 'package:flutter_project/screens/home_screen.dart';
-import 'package:flutter_project/screens/login_screen.dart';
-import 'package:flutter_project/screens/results_screen.dart';
-import 'package:flutter_project/screens/splash_screen.dart';
+import 'package:marketlens/screens/camera_screen.dart';
+import 'package:marketlens/screens/home_screen.dart';
+import 'package:marketlens/screens/login_screen.dart';
+import 'package:marketlens/screens/results_screen.dart';
+import 'package:marketlens/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
