@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/services/api_service.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _apiService = ApiService();
+  bool _showEmailPasswordFields = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +38,57 @@ class LoginScreen extends StatelessWidget {
               label: const Text('Sign in with Facebook'),
             ),
             const SizedBox(height: 16),
-            ElevatedButton.icon(
-              onPressed: () {},
-              icon: const Icon(Icons.email),
-              label: const Text('Sign in with Email'),
-            ),
+            if (!_showEmailPasswordFields)
+              ElevatedButton.icon(
+                onPressed: () {
+                  setState(() {
+                    _showEmailPasswordFields = true;
+                  });
+                },
+                icon: const Icon(Icons.email),
+                label: const Text('Sign in with Email'),
+              ),
+            if (_showEmailPasswordFields) ...[
+              const SizedBox(height: 16),
+              TextField(
+                controller: _emailController,
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                ),
+              ),
+              const SizedBox(height: 16),
+              TextField(
+                controller: _passwordController,
+                decoration: const InputDecoration(
+                  labelText: 'Password',
+                ),
+                obscureText: true,
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () async {
+                  try {
+                    final result = await _apiService.login(
+                      _emailController.text,
+                      _passwordController.text,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Login successful: ${result['token']}'),
+                      ),
+                    );
+                    Navigator.pushReplacementNamed(context, '/home');
+                  } catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(e.toString()),
+                      ),
+                    );
+                  }
+                },
+                child: const Text('Login'),
+              ),
+            ],
           ],
         ),
       ),
