@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,13 +15,20 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _navigateToLogin();
+    _navigate();
   }
 
-  void _navigateToLogin() {
-    _timer = Timer(const Duration(seconds: 3), () {
+  void _navigate() {
+    _timer = Timer(const Duration(seconds: 3), () async {
       if (mounted) {
-        Navigator.pushReplacementNamed(context, '/login');
+        final prefs = await SharedPreferences.getInstance();
+        final onboardingComplete = prefs.getBool('onboarding_complete') ?? false;
+        
+        if (onboardingComplete) {
+          Navigator.pushReplacementNamed(context, '/login');
+        } else {
+          Navigator.pushReplacementNamed(context, '/onboarding');
+        }
       }
     });
   }

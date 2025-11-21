@@ -32,11 +32,11 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('MarketLens'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () async {
-              await _apiService.logout();
-              Navigator.pushReplacementNamed(context, '/login');
+            icon: const Icon(Icons.person),
+            onPressed: () {
+              Navigator.pushNamed(context, '/profile');
             },
+            tooltip: 'Profile',
           ),
         ],
       ),
