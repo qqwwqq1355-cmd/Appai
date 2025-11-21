@@ -40,8 +40,9 @@ class _ResultsScreenState extends State<ResultsScreen> {
       final barcode = args['barcode'] as String?;
       final imagePath = args['imagePath'] as String?;
       
-      // Here we would call the API to search for the product
-      // For now, we'll show mock data
+      // TODO: Replace with actual API call when backend has product data
+      // Example: final result = await _apiService.searchProduct(barcode: barcode);
+      // For now, showing mock data until product database is seeded
       await Future.delayed(const Duration(seconds: 2)); // Simulate API call
       
       setState(() {

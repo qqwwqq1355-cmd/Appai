@@ -7,9 +7,13 @@ const router = express.Router();
 
 // Helper function to generate JWT token
 const generateToken = (userId) => {
+  if (!process.env.JWT_SECRET) {
+    throw new Error('JWT_SECRET is not defined. Please set it in your environment variables.');
+  }
+  
   return jwt.sign(
     { userId },
-    process.env.JWT_SECRET || 'fallback-secret-key',
+    process.env.JWT_SECRET,
     { expiresIn: process.env.JWT_EXPIRY || '1d' }
   );
 };
@@ -127,7 +131,12 @@ const authenticateToken = (req, res, next) => {
     return res.status(401).json({ message: 'Access token required' });
   }
 
-  jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret-key', (err, decoded) => {
+  if (!process.env.JWT_SECRET) {
+    console.error('CRITICAL: JWT_SECRET is not defined');
+    return res.status(500).json({ message: 'Server configuration error' });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
       return res.status(403).json({ message: 'Invalid or expired token' });
     }
