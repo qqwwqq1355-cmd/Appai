@@ -7,6 +7,7 @@ import 'package:marketlens/screens/splash_screen.dart';
 import 'package:marketlens/screens/profile_screen.dart';
 import 'package:marketlens/screens/onboarding_screen.dart';
 import 'package:marketlens/screens/register_screen.dart';
+import 'package:marketlens/theme/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,12 +20,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MarketLens',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        useMaterial3: true,
-      ),
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system, // Follows system theme
       initialRoute: '/',
       routes: {
         '/': (context) => const SplashScreen(),
