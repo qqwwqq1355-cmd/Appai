@@ -3,7 +3,7 @@
 ## Prerequisites
 
 ### For Android Development
-- **Flutter SDK**: Version 3.10.0 or higher
+- **Flutter SDK**: Version 3.0.0 or higher
 - **Android Studio** or **Android SDK Command-line Tools**
 - **Java JDK**: Version 11 or higher (17 recommended)
 - **Android SDK**: API Level 24 (Android 7.0) or higher
@@ -264,4 +264,4 @@ For issues or questions:
 ---
 
 **Last Updated**: November 2025
-**Flutter Version**: 3.10.0+
+**Flutter Version**: 3.0.0+

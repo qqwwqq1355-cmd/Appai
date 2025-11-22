@@ -50,7 +50,7 @@
 ### Prerequisites / المتطلبات
 
 ```bash
-# 1. Flutter SDK (3.10.0+)
+# 1. Flutter SDK (3.0.0+)
 flutter --version
 
 # 2. Java JDK (17)
