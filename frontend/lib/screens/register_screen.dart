@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marketlens/services/api_service.dart';
+import 'package:shoplensx/services/api_service.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -98,7 +98,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 const SizedBox(height: 24),
                 const Text(
-                  'Join MarketLens',
+                  'Join ShopLensX',
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,

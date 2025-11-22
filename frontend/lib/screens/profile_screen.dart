@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:marketlens/services/api_service.dart';
+import 'package:shoplensx/services/api_service.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -248,13 +248,13 @@ class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProvider
             () {
               showAboutDialog(
                 context: context,
-                applicationName: 'MarketLens',
+                applicationName: 'ShopLensX',
                 applicationVersion: '1.0.0',
                 applicationIcon: const FlutterLogo(size: 48),
                 children: [
                   const Text('Smart shopping with AI & AR'),
                   const SizedBox(height: 8),
-                  const Text('© 2025 MarketLens'),
+                  const Text('© 2025 ShopLensX'),
                 ],
               );
             },

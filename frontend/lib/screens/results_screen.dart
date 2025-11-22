@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:marketlens/services/api_service.dart';
+import 'package:shoplensx/services/api_service.dart';
 
 class ResultsScreen extends StatefulWidget {
   const ResultsScreen({super.key});

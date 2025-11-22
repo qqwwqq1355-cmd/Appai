@@ -49,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen> {
             FlutterLogo(size: 100),
             SizedBox(height: 20),
             Text(
-              'MarketLens',
+              'ShopLensX',
               style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
             ),
           ],
