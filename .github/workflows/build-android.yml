@@ -1,0 +1,108 @@
+name: Build Android App
+
+on:
+  push:
+    branches: [ main, master, copilot/setup-android-app-files ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build APK and AAB
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.19.0'
+          channel: 'stable'
+
+      - name: Setup Node.js (for backend)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Flutter dependencies
+        run: |
+          cd frontend
+          flutter pub get
+
+      - name: Verify key.properties exists
+        run: |
+          cd frontend/android
+          if [ ! -f key.properties ]; then
+            echo "⚠️ key.properties not found - using example template"
+            cp key.properties.example key.properties
+            echo "Warning: Building with example keystore configuration"
+          fi
+
+      - name: Build APK (Debug)
+        run: |
+          cd frontend
+          flutter build apk --debug
+          
+      - name: Build APK (Release)
+        run: |
+          cd frontend
+          flutter build apk --release
+
+      - name: Build App Bundle (Release)
+        run: |
+          cd frontend
+          flutter build appbundle --release
+
+      - name: Upload APK Debug Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: shoplensx-debug-apk
+          path: frontend/build/app/outputs/flutter-apk/app-debug.apk
+          retention-days: 30
+
+      - name: Upload APK Release Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: shoplensx-release-apk
+          path: frontend/build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 90
+
+      - name: Upload App Bundle Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: shoplensx-release-aab
+          path: frontend/build/app/outputs/bundle/release/app-release.aab
+          retention-days: 90
+
+      - name: Build Summary
+        run: |
+          echo "## Build Successful! 🎉" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Artifacts Generated:" >> $GITHUB_STEP_SUMMARY
+          echo "- 📱 **Debug APK**: shoplensx-debug-apk" >> $GITHUB_STEP_SUMMARY
+          echo "- 📱 **Release APK**: shoplensx-release-apk" >> $GITHUB_STEP_SUMMARY
+          echo "- 📦 **App Bundle (AAB)**: shoplensx-release-aab" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### File Sizes:" >> $GITHUB_STEP_SUMMARY
+          cd frontend/build/app/outputs
+          if [ -f flutter-apk/app-debug.apk ]; then
+            DEBUG_SIZE=$(ls -lh flutter-apk/app-debug.apk | awk '{print $5}')
+            echo "- Debug APK: $DEBUG_SIZE" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ -f flutter-apk/app-release.apk ]; then
+            RELEASE_SIZE=$(ls -lh flutter-apk/app-release.apk | awk '{print $5}')
+            echo "- Release APK: $RELEASE_SIZE" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ -f bundle/release/app-release.aab ]; then
+            AAB_SIZE=$(ls -lh bundle/release/app-release.aab | awk '{print $5}')
+            echo "- App Bundle: $AAB_SIZE" >> $GITHUB_STEP_SUMMARY
+          fi

@@ -1,11 +1,11 @@
 {
-    "name": "MarketLens",
-    "short_name": "MarketLens",
+    "name": "ShopLensX",
+    "short_name": "ShopLensX",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#FFFFFF",
     "theme_color": "#2196F3",
-    "description": "Smart Shopping with AI & AR - Scan products and compare prices",
+    "description": "عدسة التسوق الذكية - Smart Shopping with AI & AR - Scan products and compare prices",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

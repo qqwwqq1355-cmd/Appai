@@ -1,4 +1,4 @@
-package com.marketlens.app
+package com.shoplensx.app
 
 import io.flutter.embedding.android.FlutterActivity
 

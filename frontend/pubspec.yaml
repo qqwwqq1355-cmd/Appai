@@ -1,8 +1,8 @@
-name: marketlens
-description: "MarketLens - Smart Shopping with AI & AR"
+name: shoplensx
+description: "ShopLensX - عدسة التسوق الذكية - Smart Shopping with AI & AR"
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.0.0+3000
 
 environment:
   sdk: ^3.10.0
