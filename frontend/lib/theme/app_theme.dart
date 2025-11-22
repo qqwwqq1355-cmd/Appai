@@ -34,7 +34,8 @@ class AppTheme {
       onError: Colors.white,
     ),
     scaffoldBackgroundColor: backgroundColor,
-    
+
+    // App Bar Theme
     appBarTheme: const AppBarTheme(
       elevation: 0,
       centerTitle: false,

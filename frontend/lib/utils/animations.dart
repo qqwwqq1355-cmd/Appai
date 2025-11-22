@@ -8,6 +8,9 @@ class AppAnimations {
   static const Curve easeOut = Curves.easeOut;
   static const Curve elasticOut = Curves.elasticOut;
 
+  // Animation distance multiplier for slide transitions
+  static const double slideDistance = 100.0;
+
   static Widget fadeIn({
     required Widget child,
     Duration duration = normal,
@@ -35,7 +38,7 @@ class AppAnimations {
       curve: easeOut,
       builder: (context, value, child) {
         return Transform.translate(
-          offset: value * 100,
+          offset: value * slideDistance,
           child: Opacity(
             opacity: 1 - value.dy,
             child: child,

@@ -55,7 +55,7 @@ class ErrorState extends StatelessWidget {
               ElevatedButton.icon(
                 onPressed: onRetry,
                 icon: const Icon(Icons.refresh),
-                label: Text(retryButtonText!),
+                label: Text(retryButtonText ?? 'Try Again'),
               ),
             ],
           ],
@@ -119,7 +119,7 @@ class EmptyState extends StatelessWidget {
               const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: onAction,
-                child: Text(actionButtonText!),
+                child: Text(actionButtonText ?? ''),
               ),
             ],
           ],
