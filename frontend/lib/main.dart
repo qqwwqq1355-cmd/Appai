@@ -7,6 +7,8 @@ import 'package:marketlens/screens/splash_screen.dart';
 import 'package:marketlens/screens/profile_screen.dart';
 import 'package:marketlens/screens/onboarding_screen.dart';
 import 'package:marketlens/screens/register_screen.dart';
+import 'package:marketlens/screens/product_detail_screen.dart';
+import 'package:marketlens/screens/comparison_screen.dart';
 import 'package:marketlens/theme/app_theme.dart';
 
 void main() {
@@ -34,6 +36,17 @@ class MyApp extends StatelessWidget {
         '/camera': (context) => const CameraScreen(),
         '/results': (context) => const ResultsScreen(),
         '/profile': (context) => const ProfileScreen(),
+        '/comparison': (context) => const ComparisonScreen(),
+      },
+      onGenerateRoute: (settings) {
+        // Handle routes with arguments
+        if (settings.name == '/product-detail') {
+          final product = settings.arguments as Map<String, dynamic>;
+          return MaterialPageRoute(
+            builder: (context) => ProductDetailScreen(product: product),
+          );
+        }
+        return null;
       },
     );
   }

@@ -282,6 +282,32 @@ class _ResultsScreenState extends State<ResultsScreen> {
             final isLowest = index == 0;
             
             return ListTile(
+              onTap: () {
+                // Navigate to product detail screen
+                Navigator.pushNamed(
+                  context,
+                  '/product-detail',
+                  arguments: {
+                    'id': '${index + 1}',
+                    'name': _productData!['name'],
+                    'image': _productData!['imageUrl'],
+                    'images': [_productData!['imageUrl']],
+                    'price': price['price'],
+                    'rating': (_productData!['reviews'] as Map)['average'],
+                    'reviews': (_productData!['reviews'] as Map)['count'],
+                    'store': price['store'],
+                    'storeUrl': price['url'],
+                    'description': 'High-quality product with excellent features and performance. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    'specifications': {
+                      'Brand': 'Sample Brand',
+                      'Model': 'XYZ-123',
+                      'Color': 'Black',
+                      'Weight': '250g',
+                      'Warranty': '1 Year',
+                    },
+                  },
+                );
+              },
               leading: CircleAvatar(
                 backgroundColor: isLowest ? Colors.green : Colors.grey[300],
                 child: Text(
@@ -298,10 +324,10 @@ class _ResultsScreenState extends State<ResultsScreen> {
               ),
               subtitle: isLowest
                   ? const Text(
-                      'Lowest Price',
+                      'Lowest Price • Tap for details',
                       style: TextStyle(color: Colors.green),
                     )
-                  : null,
+                  : const Text('Tap for details'),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

@@ -187,30 +187,60 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               // Quick Actions
               Padding(
                 padding: const EdgeInsets.all(24),
-                child: Row(
+                child: Column(
                   children: [
-                    Expanded(
-                      child: _QuickActionCard(
-                        icon: Icons.history,
-                        label: 'History',
-                        onTap: () async {
-                          await Haptics.light();
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('History coming soon')),
-                          );
-                        },
-                      ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _QuickActionCard(
+                            icon: Icons.history,
+                            label: 'History',
+                            onTap: () async {
+                              await Haptics.light();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text('History coming soon')),
+                              );
+                            },
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: _QuickActionCard(
+                            icon: Icons.favorite_border,
+                            label: 'Favorites',
+                            onTap: () async {
+                              await Haptics.light();
+                              Navigator.pushNamed(context, '/profile');
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: _QuickActionCard(
-                        icon: Icons.favorite_border,
-                        label: 'Favorites',
-                        onTap: () async {
-                          await Haptics.light();
-                          Navigator.pushNamed(context, '/profile');
-                        },
-                      ),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _QuickActionCard(
+                            icon: Icons.compare_arrows,
+                            label: 'Compare Products',
+                            onTap: () async {
+                              await Haptics.light();
+                              Navigator.pushNamed(context, '/comparison');
+                            },
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: _QuickActionCard(
+                            icon: Icons.notifications_outlined,
+                            label: 'Price Alerts',
+                            onTap: () async {
+                              await Haptics.light();
+                              Navigator.pushNamed(context, '/profile');
+                            },
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
