@@ -1,6 +1,6 @@
-# MarketLens Android Platform
+# ShopLensX Android Platform
 
-This directory contains the Android-specific code and configuration for the MarketLens Flutter application.
+This directory contains the Android-specific code and configuration for the ShopLensX Flutter application.
 
 ## Structure
 
@@ -8,7 +8,7 @@ This directory contains the Android-specific code and configuration for the Mark
 android/
 ├── app/
 │   ├── src/main/
-│   │   ├── kotlin/com/marketlens/app/
+│   │   ├── kotlin/com/shoplensx/app/
 │   │   │   └── MainActivity.kt          # Main Android activity
 │   │   ├── res/                         # Android resources
 │   │   │   ├── drawable/                # Drawable resources
@@ -29,7 +29,7 @@ android/
 ## Configuration
 
 ### Application Details
-- **Package Name**: `com.marketlens.app`
+- **Package Name**: `com.shoplensx.app`
 - **Min SDK**: API 24 (Android 7.0)
 - **Target SDK**: API 34 (Android 14)
 - **Compile SDK**: API 34
@@ -165,16 +165,16 @@ For release builds, you need to configure signing:
 
 1. Generate a keystore:
 ```bash
-keytool -genkey -v -keystore ~/marketlens-release.keystore \
-  -keyalg RSA -keysize 2048 -validity 10000 -alias marketlens
+keytool -genkey -v -keystore ~/shoplensx-release.keystore \
+  -keyalg RSA -keysize 2048 -validity 10000 -alias shoplensx
 ```
 
 2. Create `key.properties`:
 ```properties
 storePassword=<password>
 keyPassword=<password>
-keyAlias=marketlens
-storeFile=/path/to/marketlens-release.keystore
+keyAlias=shoplensx
+storeFile=/path/to/shoplensx-release.keystore
 ```
 
 3. Update `app/build.gradle` to reference `key.properties`

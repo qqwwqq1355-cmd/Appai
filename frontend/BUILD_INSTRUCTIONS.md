@@ -1,4 +1,4 @@
-# MarketLens - Build Instructions
+# ShopLensX - Build Instructions
 
 ## Prerequisites
 
@@ -152,7 +152,7 @@ flutter run -d chrome
 ## Build Configurations
 
 ### Application ID
-- Android: `com.marketlens.app`
+- Android: `com.shoplensx.app`
 - iOS: Should match your bundle identifier
 
 ### Version Information
@@ -207,7 +207,7 @@ cd ..
 
 Create a `.env` file in the frontend root:
 ```env
-API_BASE_URL=https://api.marketlens.app
+API_BASE_URL=https://api.shoplensx.app
 GOOGLE_ML_KIT_API_KEY=your_key_here
 # Add other API keys as needed
 ```
@@ -216,7 +216,7 @@ GOOGLE_ML_KIT_API_KEY=your_key_here
 
 ### Generate Keystore
 ```bash
-keytool -genkey -v -keystore ~/marketlens-release.keystore -keyalg RSA -keysize 2048 -validity 10000 -alias marketlens
+keytool -genkey -v -keystore ~/shoplensx-release.keystore -keyalg RSA -keysize 2048 -validity 10000 -alias shoplensx
 ```
 
 ### Create key.properties
@@ -224,8 +224,8 @@ Create `android/key.properties`:
 ```properties
 storePassword=your_store_password
 keyPassword=your_key_password
-keyAlias=marketlens
-storeFile=/path/to/marketlens-release.keystore
+keyAlias=shoplensx
+storeFile=/path/to/shoplensx-release.keystore
 ```
 
 **Important**: Never commit `key.properties` or keystore files to version control!
@@ -259,7 +259,7 @@ Example GitHub Actions workflow is available in `.github/workflows/`.
 
 For issues or questions:
 - Check Flutter documentation: https://flutter.dev/docs
-- MarketLens issues: https://github.com/qqwwqq1355-cmd/Appai/issues
+- ShopLensX issues: https://github.com/qqwwqq1355-cmd/Appai/issues
 
 ---
 

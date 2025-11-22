@@ -1,6 +1,6 @@
-# MarketLens iOS Platform
+# ShopLensX iOS Platform
 
-This directory contains the iOS-specific code and configuration for the MarketLens Flutter application.
+This directory contains the iOS-specific code and configuration for the ShopLensX Flutter application.
 
 ## Structure
 
@@ -24,15 +24,15 @@ ios/
 ## Configuration
 
 ### Application Details
-- **Bundle Identifier**: `com.marketlens.app` (configured in Xcode)
+- **Bundle Identifier**: `com.shoplensx.app` (configured in Xcode)
 - **Deployment Target**: iOS 12.0+
-- **Display Name**: MarketLens
+- **Display Name**: ShopLensX
 
 ### Permissions
 The app requires the following permissions (configured in Info.plist):
-- `NSCameraUsageDescription` - "MarketLens needs camera access to scan products and get price comparisons."
-- `NSPhotoLibraryUsageDescription` - "MarketLens needs photo library access to select product images."
-- `NSPhotoLibraryAddUsageDescription` - "MarketLens needs permission to save product images."
+- `NSCameraUsageDescription` - "ShopLensX needs camera access to scan products and get price comparisons."
+- `NSPhotoLibraryUsageDescription` - "ShopLensX needs photo library access to select product images."
+- `NSPhotoLibraryAddUsageDescription` - "ShopLensX needs permission to save product images."
 
 ### Supported Orientations
 - **iPhone**: Portrait, Landscape Left, Landscape Right
