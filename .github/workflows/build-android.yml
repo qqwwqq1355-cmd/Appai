@@ -38,14 +38,23 @@ jobs:
           cd frontend
           flutter pub get
 
-      - name: Verify key.properties exists
+      - name: Verify signing files
         run: |
+          echo "📋 Checking signing files..."
           cd frontend/android
-          if [ ! -f key.properties ]; then
-            echo "⚠️ key.properties not found - using example template"
-            cp key.properties.example key.properties
-            echo "Warning: Building with example keystore configuration"
+          if [ -f key.properties ]; then
+            echo "✅ key.properties found"
+          else
+            echo "❌ key.properties missing"
+            exit 1
           fi
+          if [ -f app/keystore/shoplensx-release.jks ]; then
+            echo "✅ shoplensx-release.jks found"
+          else
+            echo "❌ shoplensx-release.jks missing"
+            exit 1
+          fi
+          echo "🔐 All signing files verified!"
 
       - name: Build APK (Debug)
         run: |
