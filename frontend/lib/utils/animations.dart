@@ -48,4 +48,25 @@ class AppAnimations {
       child: child,
     );
   }
+
+  static Widget scaleIn({
+    required Widget child,
+    Duration duration = normal,
+  }) {
+    return TweenAnimationBuilder<double>(
+      tween: Tween(begin: 0.8, end: 1.0),
+      duration: duration,
+      curve: easeOut,
+      builder: (context, value, child) {
+        return Transform.scale(
+          scale: value,
+          child: Opacity(
+            opacity: value,
+            child: child,
+          ),
+        );
+      },
+      child: child,
+    );
+  }
 }
