@@ -4,5 +4,6 @@
 GeneratedPluginRegistrant.java
 
 # Keystore signing configuration (contains passwords)
-# The keystore file itself is committed for this project
-key.properties
+# For this project, key.properties is committed to allow automated builds
+# In production projects, keep this line uncommented for security:
+# key.properties
