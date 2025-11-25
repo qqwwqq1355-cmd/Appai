@@ -11,7 +11,7 @@ jobs:
   build:
     name: Build APK and AAB
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -38,29 +38,35 @@ jobs:
           cd frontend
           flutter pub get
 
+      # ------------------------------
+      # 🔐 VERIFY SIGNING FILES
+      # ------------------------------
       - name: Verify signing files
         run: |
           echo "📋 Checking signing files..."
           cd frontend/android
+
+          # تحقق من key.properties
           if [ -f key.properties ]; then
             echo "✅ key.properties found"
           else
-            echo "❌ key.properties missing"
+            echo "❌ key.properties missing at frontend/android/key.properties"
             exit 1
           fi
+
+          # تحقق من keystore
           if [ -f app/keystore/shoplensx-release.jks ]; then
             echo "✅ shoplensx-release.jks found"
           else
-            echo "❌ shoplensx-release.jks missing"
+            echo "❌ shoplensx-release.jks missing at frontend/android/app/keystore/shoplensx-release.jks"
             exit 1
           fi
+
           echo "🔐 All signing files verified!"
 
-      - name: Build APK (Debug)
-        run: |
-          cd frontend
-          flutter build apk --debug
-          
+      # ------------------------------
+      # 📦 BUILDING (Release فقط)
+      # ------------------------------
       - name: Build APK (Release)
         run: |
           cd frontend
@@ -71,13 +77,9 @@ jobs:
           cd frontend
           flutter build appbundle --release
 
-      - name: Upload APK Debug Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: shoplensx-debug-apk
-          path: frontend/build/app/outputs/flutter-apk/app-debug.apk
-          retention-days: 30
-
+      # ------------------------------
+      # 📤 UPLOAD ARTIFACTS
+      # ------------------------------
       - name: Upload APK Release Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -92,25 +94,26 @@ jobs:
           path: frontend/build/app/outputs/bundle/release/app-release.aab
           retention-days: 90
 
+      # ------------------------------
+      # 📄 BUILD SUMMARY
+      # ------------------------------
       - name: Build Summary
         run: |
           echo "## Build Successful! 🎉" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Artifacts Generated:" >> $GITHUB_STEP_SUMMARY
-          echo "- 📱 **Debug APK**: shoplensx-debug-apk" >> $GITHUB_STEP_SUMMARY
           echo "- 📱 **Release APK**: shoplensx-release-apk" >> $GITHUB_STEP_SUMMARY
           echo "- 📦 **App Bundle (AAB)**: shoplensx-release-aab" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### File Sizes:" >> $GITHUB_STEP_SUMMARY
+
           cd frontend/build/app/outputs
-          if [ -f flutter-apk/app-debug.apk ]; then
-            DEBUG_SIZE=$(ls -lh flutter-apk/app-debug.apk | awk '{print $5}')
-            echo "- Debug APK: $DEBUG_SIZE" >> $GITHUB_STEP_SUMMARY
-          fi
+
           if [ -f flutter-apk/app-release.apk ]; then
             RELEASE_SIZE=$(ls -lh flutter-apk/app-release.apk | awk '{print $5}')
             echo "- Release APK: $RELEASE_SIZE" >> $GITHUB_STEP_SUMMARY
           fi
+
           if [ -f bundle/release/app-release.aab ]; then
             AAB_SIZE=$(ls -lh bundle/release/app-release.aab | awk '{print $5}')
             echo "- App Bundle: $AAB_SIZE" >> $GITHUB_STEP_SUMMARY
