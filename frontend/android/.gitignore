@@ -1,0 +1,9 @@
+/.gradle
+/captures/
+/local.properties
+GeneratedPluginRegistrant.java
+
+# Keystore signing configuration (contains passwords)
+# For this project, key.properties is committed to allow automated builds
+# In production projects, keep this line uncommented for security:
+# key.properties

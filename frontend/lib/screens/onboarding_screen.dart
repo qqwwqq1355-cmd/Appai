@@ -14,7 +14,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   final List<OnboardingPage> _pages = [
     OnboardingPage(
-      title: 'Welcome to MarketLens',
+      title: 'Welcome to ShopLensX',
       description: 'Your smart shopping companion powered by AI',
       icon: Icons.shopping_bag,
       color: Colors.blue,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:marketlens/services/api_service.dart';
-import 'package:marketlens/utils/haptics.dart';
-import 'package:marketlens/utils/animations.dart';
+import 'package:shoplensx/services/api_service.dart';
+import 'package:shoplensx/utils/haptics.dart';
+import 'package:shoplensx/utils/animations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             Icon(Icons.shopping_bag_outlined, 
                  color: Theme.of(context).colorScheme.primary),
             const SizedBox(width: 8),
-            const Text('MarketLens'),
+            const Text('ShopLensX'),
           ],
         ),
         actions: [

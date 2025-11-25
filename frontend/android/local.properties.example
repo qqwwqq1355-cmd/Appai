@@ -1,0 +1,15 @@
+# This file configures the Flutter build environment
+# Copy this file to local.properties and update the paths
+
+# Android SDK location
+# sdk.dir=/path/to/your/Android/Sdk
+# Example (Linux/Mac): sdk.dir=/home/user/Android/Sdk
+# Example (Windows): sdk.dir=C:\\Users\\username\\AppData\\Local\\Android\\Sdk
+
+# Flutter SDK location
+# flutter.sdk=/path/to/your/flutter
+# Example (Linux/Mac): flutter.sdk=/home/user/flutter
+# Example (Windows): flutter.sdk=C:\\flutter
+
+# Note: This file should not be committed to version control
+# The actual local.properties file is in .gitignore
